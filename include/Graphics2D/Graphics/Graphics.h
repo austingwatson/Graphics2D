@@ -2,12 +2,16 @@
 
 #include <glad/glad.h>
 
-#include <Engine2D/Color.h>
+#include <Graphics2D/Graphics/Shader.h>
+#include <Graphics2D/Graphics/Buffer.h>
+#include <Graphics2D/Color.h>
 
 class Graphics {
 public:
 	Graphics();
 	~Graphics();
+	void create();
+	void destroy();
 	void setColor(float r, float g, float b, float a);
 	void setColor(int r, int g, int b, int a);
 	void clear();
@@ -16,5 +20,7 @@ public:
 	void fillRect(float x, float y, float height, float width);
 
 private:
+	Shader* rectShader;
+	Buffer* buffer;
 	Color* color;
 };

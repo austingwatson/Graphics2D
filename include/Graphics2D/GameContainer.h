@@ -3,8 +3,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include <Engine2D/Manager/StateManager.h>
-#include <Engine2D/Graphics/Graphics.h>
+#include <Graphics2D/Manager/StateManager.h>
+#include <Graphics2D/Graphics/Graphics.h>
 
 class GameContainer
 {

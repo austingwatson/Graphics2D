@@ -1,4 +1,4 @@
-#include <Engine2D/GameContainer.h>
+#include <Graphics2D/GameContainer.h>
 
 #include <iostream>
 
@@ -68,6 +68,7 @@ bool GameContainer::setBorderlessFullscreen()
 
 void GameContainer::start()
 {
+    graphics->create();
     stateManager->initAll(this);
 
     while (!glfwWindowShouldClose(window))
@@ -84,6 +85,7 @@ void GameContainer::start()
         glfwPollEvents();
     }
 
+    graphics->destroy();
     glfwTerminate();
 }
 

@@ -24,6 +24,7 @@ void AppState::update(GameContainer& gc, float delta)
 
 void AppState::render(GameContainer& gc, Graphics& g)
 {
+	g.drawRect(500.0, 500.0, 50.0, 50.0);
 }
 
 int AppState::getID()

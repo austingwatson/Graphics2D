@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Engine2D/GameContainer.h>
+#include <Graphics2D/GameContainer.h>
 
 class State;
 class Graphics;

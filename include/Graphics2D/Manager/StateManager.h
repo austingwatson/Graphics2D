@@ -2,8 +2,8 @@
 
 #include <vector>
 
-#include <Engine2D/State.h>
-#include <Engine2D/Manager/DefaultState.h>
+#include <Graphics2D/State.h>
+#include <Graphics2D/Manager/DefaultState.h>
 
 class GameContainer;
 class Graphics;
