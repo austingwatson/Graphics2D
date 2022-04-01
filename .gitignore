@@ -8,7 +8,8 @@ x64/
 
 # files
 src/glad.c
-Engine2D.sln
-Engine2D.vcxproj
-Engine2D.vcxproj.filters
-Engine2D.vcxproj.user
+Graphics2D.filters
+Graphics2D.sln
+Graphics2D.user
+Graphics2D.vcxproj
+Graphics2D.vcxproj.user
