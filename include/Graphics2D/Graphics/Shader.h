@@ -3,7 +3,7 @@
 class Shader {
 public:
 	Shader();
-	void create(const char* vertexPath, const char* fragmentPath);
+	void init(const char* vertexPath, const char* fragmentPath);
 	void destroy();
 	void use();
 

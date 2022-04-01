@@ -9,26 +9,30 @@ Graphics::Graphics()
 
 Graphics::~Graphics()
 {
-	rectShader->destroy();
 	delete rectShader;
 	delete buffer;
 	delete color;
 }
 
-void Graphics::create()
+void Graphics::init()
 {
 	rectShader = new Shader();
-	rectShader->create("C:\\zCode\\c++\\Engine2D\\shaders\\rectangle.vs", "C:\\zCode\\c++\\Engine2D\\shaders\\rectangle.fs");
+	rectShader->init("C:\\zCode\\c++\\Graphics2D\\shaders\\rectangle.vs", "C:\\zCode\\c++\\Graphics2D\\shaders\\rectangle.fs");
 
 	float vertices[] = {
-		// positions         // colors
-		 0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,  // bottom left
-		 0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f   // top 
+		// positions          // colors           
+		 0.5f,  0.5f, 0.0f,   1.0f, 0.0f, 0.0f, // top right
+		 0.5f, -0.5f, 0.0f,   0.0f, 1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f,   0.0f, 0.0f, 1.0f, // bottom left
+		-0.5f,  0.5f, 0.0f,   1.0f, 1.0f, 0.0f  // top left 
+	};
+	unsigned int indices[] = {
+		0, 1, 3, // first triangle
+		1, 2, 3  // second triangle
 	};
 
 	buffer = new Buffer();
-	buffer->create(vertices, 18);
+	buffer->init(vertices, 24, indices, 6);
 }
 
 void Graphics::destroy()
@@ -60,5 +64,7 @@ void Graphics::drawRect(float x, float y, float width, float height)
 
 void Graphics::fillRect(float x, float y, float width, float height)
 {
-
+	rectShader->use();
+	buffer->use();
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }

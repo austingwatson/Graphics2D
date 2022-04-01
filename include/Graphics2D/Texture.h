@@ -6,7 +6,7 @@
 class Texture {
 public:
 	Texture();
-	void create(const char* path);
+	void init(const char* path);
 	void destroy();
 	void use();
 

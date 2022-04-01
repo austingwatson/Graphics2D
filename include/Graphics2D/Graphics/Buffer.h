@@ -6,8 +6,8 @@ class Buffer
 {
 public:
 	Buffer();
-	void create(float* vertices, unsigned int verticesSize);
-	void create(float* vertices, unsigned int verticesSize, unsigned int* indices, unsigned int indicesSize);
+	void init(float* vertices, unsigned int verticesSize);
+	void init(float* vertices, unsigned int verticesSize, unsigned int* indices, unsigned int indicesSize);
 	void destroy();
 	void use();
 

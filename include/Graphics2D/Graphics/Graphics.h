@@ -10,7 +10,7 @@ class Graphics {
 public:
 	Graphics();
 	~Graphics();
-	void create();
+	void init();
 	void destroy();
 	void setColor(float r, float g, float b, float a);
 	void setColor(int r, int g, int b, int a);

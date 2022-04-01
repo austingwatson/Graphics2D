@@ -7,7 +7,7 @@ Buffer::Buffer()
     ebo = 0;
 }
 
-void Buffer::create(float* vertices, unsigned int verticesSize)
+void Buffer::init(float* vertices, unsigned int verticesSize)
 {
 
     glGenVertexArrays(1, &vao);
@@ -25,7 +25,7 @@ void Buffer::create(float* vertices, unsigned int verticesSize)
     glEnableVertexAttribArray(1);
 }
 
-void Buffer::create(float* vertices, unsigned int verticesSize, unsigned int* indices, unsigned int indicesSize)
+void Buffer::init(float* vertices, unsigned int verticesSize, unsigned int* indices, unsigned int indicesSize)
 {
     glGenVertexArrays(1, &vao);
     glGenBuffers(1, &vbo);
@@ -40,14 +40,14 @@ void Buffer::create(float* vertices, unsigned int verticesSize, unsigned int* in
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(unsigned int) * indicesSize, indices, GL_STATIC_DRAW);
 
     // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
     // color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
     // texture coord attribute
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
-    glEnableVertexAttribArray(2);
+    //glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+    //glEnableVertexAttribArray(2);
 }
 
 void Buffer::destroy()
