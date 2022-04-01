@@ -68,7 +68,7 @@ bool GameContainer::setBorderlessFullscreen()
 
 void GameContainer::start()
 {
-    graphics->create();
+    graphics->init();
     stateManager->initAll(this);
 
     while (!glfwWindowShouldClose(window))
