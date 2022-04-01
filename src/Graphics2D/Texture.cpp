@@ -7,7 +7,7 @@ Texture::Texture()
 	id = 0;
 }
 
-void Texture::create(const char* path)
+void Texture::init(const char* path)
 {
     glGenTextures(1, &id);
     glBindTexture(GL_TEXTURE_2D, id);
