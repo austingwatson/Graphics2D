@@ -12,7 +12,7 @@ Shader::Shader()
     id = 0;
 }
 
-void Shader::create(const char* vertexPath, const char* fragmentPath)
+void Shader::init(const char* vertexPath, const char* fragmentPath)
 {
     // 1. retrieve the vertex/fragment source code from filePath
     std::string vertexCode;
@@ -95,7 +95,19 @@ void Shader::destroy()
     glDeleteProgram(id);
 }
 
+void Shader::setUniformMatrix4fv(const char* name, float* value)
+{
+    use();
+    unsigned int location = glGetUniformLocation(id, name);
+    glUniformMatrix4fv(location, 1, GL_FALSE, value);
+}
+
 void Shader::use()
 {
     glUseProgram(id);
+}
+
+unsigned int Shader::getID()
+{
+    return id;
 }
