@@ -95,6 +95,13 @@ void Shader::destroy()
     glDeleteProgram(id);
 }
 
+void Shader::setUniform4f(const char* name, float v1, float v2, float v3, float v4)
+{
+    use();
+    unsigned int location = glGetUniformLocation(id, name);
+    glUniform4f(location, v1, v2, v3, v4);
+}
+
 void Shader::setUniformMatrix4fv(const char* name, float* value)
 {
     use();
