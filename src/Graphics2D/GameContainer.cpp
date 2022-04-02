@@ -36,6 +36,8 @@ GameContainer::~GameContainer()
 
 bool GameContainer::setWindowed(int width, int height)
 {
+    this->width = width;
+    this->height = height;
     window = glfwCreateWindow(width, height, "Engine2D", NULL, NULL);
     if (window == NULL)
     {
@@ -68,7 +70,8 @@ bool GameContainer::setBorderlessFullscreen()
 
 void GameContainer::start()
 {
-    graphics->init();
+    std::cout << width << ", " << height << std::endl;
+    graphics->init(width, height);
     stateManager->initAll(this);
 
     while (!glfwWindowShouldClose(window))
@@ -78,6 +81,7 @@ void GameContainer::start()
 
         stateManager->update(0.0);
 
+        graphics->setColor(0.0f, 0.0f, 0.0f, 0.0f);
         graphics->clear();
         stateManager->render(*graphics);
 

@@ -27,22 +27,29 @@ void Mat4f::ortho(float left, float right, float bottom, float top, float near, 
 
 	elements[0 + 0 * 4] = 2.0f / (right - left);
 	elements[1 + 1 * 4] = 2.0f / (top - bottom);
-	elements[2 + 2 * 4] = 2.0f / (near - far);
+	elements[2 + 2 * 4] = -2.0f / (far - near);
 
-	elements[0 + 3 * 4] = (left + right) / (left - right);
-	elements[1 + 3 * 4] = (bottom + top) / (bottom - top);
-	elements[2 + 3 * 4] = (near + far) / (far - near);
+	elements[0 + 3 * 4] = -(left + right) / (right - left);
+	elements[1 + 3 * 4] = -(bottom + top) / (top - bottom);
+	elements[2 + 3 * 4] = -(near + far) / (far - near);
+}
+
+void Mat4f::set(const Mat4f& mat4f)
+{
+	for (int i = 0; i < 4 * 4; ++i)
+		this->elements[i] = mat4f.elements[i];
 }
 
 void Mat4f::multiply(const Mat4f& mat4f)
 {
 	Mat4f result;
 
+	float sum;
 	for (int y = 0; y < 4; ++y)
 	{
 		for (int x = 0; x < 4; ++x)
 		{
-			float sum = 0.0f;
+			sum = 0.0f;
 			for (int e = 0; e < 4; ++e)
 			{
 				sum += this->elements[e + y * 4] * mat4f.elements[x + e * 4];
@@ -86,9 +93,9 @@ void Mat4f::rotate(float angle, float x, float y, float z)
 
 void Mat4f::scale(float x, float y, float z)
 {
-	elements[0 + 3 * 4] *= x;
-	elements[1 + 3 * 4] *= y;
-	elements[2 + 3 * 4] *= z;
+	elements[0 + 0 * 4] *= x;
+	elements[1 + 1 * 4] *= y;
+	elements[2 + 2 * 4] *= z;
 }
 
 float* Mat4f::getElements()

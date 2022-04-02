@@ -1,6 +1,7 @@
 #pragma once
 
 #include <math.h>
+#include <iostream>
 
 class Mat4f {
 public:
@@ -8,6 +9,7 @@ public:
 	~Mat4f();
 	void identity();
 	void ortho(float left, float right, float bottom, float top, float near, float far);
+	void set(const Mat4f& mat4f);
 	void multiply(const Mat4f& mat4f);
 	void translate(float x, float y, float z);
 	void rotate(float angle, float x, float y, float z);
